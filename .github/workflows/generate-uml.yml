@@ -35,10 +35,13 @@ jobs:
           cmake --build build
 
       - name: Generate diagrams
-        run: clang-uml --progress --query-driver /usr/bin/c++
+        run: |
+          clang-uml --progress --query-driver /usr/bin/c++
+          clang-uml -g mermaid --query-driver /usr/bin/c++
+          python3 scripts/embed_diagrams.py
 
       - name: Commit generated diagrams
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update generated UML diagrams"
-          file_pattern: docs/diagrams/*.puml
+          file_pattern: README.md docs/diagrams/*.puml docs/diagrams/*.mmd

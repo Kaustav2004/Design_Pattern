@@ -1,0 +1,54 @@
+classDiagram
+    class C_0015070288861779828488["std::string"]
+    class C_0015070288861779828488 {
+    }
+    class C_0000562371626193405134["std::unique_ptr&lt;Notification&gt;"]
+    class C_0000562371626193405134 {
+    }
+    class C_0011059798107567739753["Notification"]
+    class C_0011059798107567739753 {
+        <<abstract>>
+        +~Notification() [default] void
+        +send(const string & message) [const] void*
+    }
+    class C_0016893704426602730684["EmailNotification"]
+    class C_0016893704426602730684 {
+        +send(const string & message) [const] void
+    }
+    class C_0007282521114909112944["SMSNotification"]
+    class C_0007282521114909112944 {
+        +send(const string & message) [const] void
+    }
+    class C_0016629626733807544515["NotificationFactory"]
+    class C_0016629626733807544515 {
+        <<abstract>>
+        +~NotificationFactory() [default] void
+        +createNotification() [const] std::unique_ptr&lt;Notification&gt;*
+        +notify(const string & message) [const] void
+    }
+    class C_0009926197004451764028["EmailNotificationFactory"]
+    class C_0009926197004451764028 {
+        +createNotification() [const] std::unique_ptr&lt;Notification&gt;
+    }
+    class C_0006861658365665630179["SMSNotificationFactory"]
+    class C_0006861658365665630179 {
+        +createNotification() [const] std::unique_ptr&lt;Notification&gt;
+    }
+    C_0000562371626193405134 ..> C_0011059798107567739753 : 
+    C_0011059798107567739753 ..> C_0015070288861779828488 : 
+    C_0016893704426602730684 ..> C_0015070288861779828488 : 
+    C_0011059798107567739753 <|-- C_0016893704426602730684 : 
+    C_0007282521114909112944 ..> C_0015070288861779828488 : 
+    C_0011059798107567739753 <|-- C_0007282521114909112944 : 
+    C_0016629626733807544515 ..> C_0000562371626193405134 : 
+    C_0016629626733807544515 ..> C_0011059798107567739753 : 
+    C_0016629626733807544515 ..> C_0015070288861779828488 : 
+    C_0009926197004451764028 ..> C_0000562371626193405134 : 
+    C_0009926197004451764028 ..> C_0011059798107567739753 : 
+    C_0016629626733807544515 <|-- C_0009926197004451764028 : 
+    C_0006861658365665630179 ..> C_0000562371626193405134 : 
+    C_0006861658365665630179 ..> C_0011059798107567739753 : 
+    C_0016629626733807544515 <|-- C_0006861658365665630179 : 
+
+%% Generated with clang-uml, version 0.6.3
+%% LLVM version Homebrew clang version 22.1.8

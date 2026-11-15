@@ -1,0 +1,59 @@
+classDiagram
+    class C_0004437079332216935028["std::unique_ptr&lt;Payment&gt;"]
+    class C_0004437079332216935028 {
+    }
+    class C_0009760794342839288652["Payment"]
+    class C_0009760794342839288652 {
+        <<abstract>>
+        +~Payment() [default] void
+        +pay(double amount) [const] void*
+    }
+    class C_0002586015173330893807["UPIPayment"]
+    class C_0002586015173330893807 {
+        +pay(double amount) [const] void
+    }
+    class C_0017515195328364720074["CreditCardPayment"]
+    class C_0017515195328364720074 {
+        +pay(double amount) [const] void
+    }
+    class C_0006411282814465518445["PayPalPayment"]
+    class C_0006411282814465518445 {
+        +pay(double amount) [const] void
+    }
+    class C_0008860022231858625219["PaymentFactory"]
+    class C_0008860022231858625219 {
+        <<abstract>>
+        +~PaymentFactory() [default] void
+        +createPayment() [const] std::unique_ptr&lt;Payment&gt;*
+        +processPayment(double amount) [const] void
+    }
+    class C_0002891019806118480022["UPIPaymentFactory"]
+    class C_0002891019806118480022 {
+        +createPayment() [const] std::unique_ptr&lt;Payment&gt;
+    }
+    class C_0002334204914400067972["CreditCardPaymentFactory"]
+    class C_0002334204914400067972 {
+        +createPayment() [const] std::unique_ptr&lt;Payment&gt;
+    }
+    class C_0017142614624986324678["PayPalPaymentFactory"]
+    class C_0017142614624986324678 {
+        +createPayment() [const] std::unique_ptr&lt;Payment&gt;
+    }
+    C_0004437079332216935028 ..> C_0009760794342839288652 : 
+    C_0009760794342839288652 <|-- C_0002586015173330893807 : 
+    C_0009760794342839288652 <|-- C_0017515195328364720074 : 
+    C_0009760794342839288652 <|-- C_0006411282814465518445 : 
+    C_0008860022231858625219 ..> C_0004437079332216935028 : 
+    C_0008860022231858625219 ..> C_0009760794342839288652 : 
+    C_0002891019806118480022 ..> C_0004437079332216935028 : 
+    C_0002891019806118480022 ..> C_0009760794342839288652 : 
+    C_0008860022231858625219 <|-- C_0002891019806118480022 : 
+    C_0002334204914400067972 ..> C_0004437079332216935028 : 
+    C_0002334204914400067972 ..> C_0009760794342839288652 : 
+    C_0008860022231858625219 <|-- C_0002334204914400067972 : 
+    C_0017142614624986324678 ..> C_0004437079332216935028 : 
+    C_0017142614624986324678 ..> C_0009760794342839288652 : 
+    C_0008860022231858625219 <|-- C_0017142614624986324678 : 
+
+%% Generated with clang-uml, version 0.6.3
+%% LLVM version Homebrew clang version 22.1.8
