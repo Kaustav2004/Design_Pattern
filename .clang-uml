@@ -5,7 +5,31 @@ diagrams:
     type: class
     glob:
       - Creational_pattern/Factory_Pattern/Factory_Design_Pattern.cpp
+    generate_method_arguments: none
+    include_relations_also_as_members: false
+    include:
+      relationships:
+        - inheritance
+        - dependency
+    exclude:
+      namespaces:
+        - std
+    mermaid:
+      after:
+        - direction LR
   payment_factory:
     type: class
     glob:
       - Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.cpp
+    generate_method_arguments: none
+    include_relations_also_as_members: false
+    include:
+      relationships:
+        - inheritance
+        - dependency
+    exclude:
+      namespaces:
+        - std
+    mermaid:
+      after:
+        - direction LR
