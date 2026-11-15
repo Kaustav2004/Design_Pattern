@@ -9,6 +9,7 @@ on:
       - '.clang-uml'
       - 'CMakeLists.txt'
       - '.github/workflows/generate-uml.yml'
+      - '.github/puppeteer-config.json'
   workflow_dispatch:
 
 permissions:
@@ -43,9 +44,11 @@ jobs:
         run: |
           clang-uml --progress -g mermaid --query-driver /usr/bin/c++
           npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
+            -p .github/puppeteer-config.json \
             -i build/uml/notification_factory.mmd \
             -o Creational_pattern/Factory_Pattern/Factory_Design_Pattern.svg
           npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
+            -p .github/puppeteer-config.json \
             -i build/uml/payment_factory.mmd \
             -o Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.svg
 
