@@ -5,7 +5,7 @@ diagrams:
     type: class
     glob:
       - Creational_pattern/Factory_Pattern/Factory_Design_Pattern.cpp
-    generate_method_arguments: none
+    generate_method_arguments: full
     include_relations_also_as_members: false
     include:
       relationships:
@@ -21,7 +21,7 @@ diagrams:
     type: class
     glob:
       - Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.cpp
-    generate_method_arguments: none
+    generate_method_arguments: full
     include_relations_also_as_members: false
     include:
       relationships:

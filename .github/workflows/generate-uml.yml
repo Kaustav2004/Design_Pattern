@@ -8,6 +8,7 @@ on:
       - '**/*.cpp'
       - '.clang-uml'
       - 'CMakeLists.txt'
+      - 'scripts/format_uml.py'
       - 'scripts/add_uml_legend.py'
       - '.github/workflows/generate-uml.yml'
       - '.github/puppeteer-config.json'
@@ -44,6 +45,8 @@ jobs:
       - name: Generate diagrams
         run: |
           clang-uml --progress -g mermaid --query-driver /usr/bin/c++
+          python3 scripts/format_uml.py build/uml/notification_factory.mmd
+          python3 scripts/format_uml.py build/uml/payment_factory.mmd
           npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
             -p .github/puppeteer-config.json \
             -i build/uml/notification_factory.mmd \

@@ -81,11 +81,11 @@ def add_legend(path):
     row_y = top + 39
     left = min_x + 24
     line(left, left + 66, row_y, triangle=True)
-    label(left + 82, "Inheritance / implements")
+    label(left + 82, "Inheritance (triangle points to parent)")
 
     right = min_x + width * 0.53
     line(right, right + 66, row_y, dashed=True)
-    label(right + 82, "Dependency / uses")
+    label(right + 82, "Creates (dashed dependency)")
 
     tree.write(path, encoding="utf-8", xml_declaration=True)
 
