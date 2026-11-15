@@ -1,0 +1,11 @@
+compilation_database_dir: build
+output_directory: docs/diagrams
+diagrams:
+  notification_factory:
+    type: class
+    glob:
+      - Factory_Design_Pattern.cpp
+  payment_factory:
+    type: class
+    glob:
+      - Payment_Factory_Design_Pattern.cpp
