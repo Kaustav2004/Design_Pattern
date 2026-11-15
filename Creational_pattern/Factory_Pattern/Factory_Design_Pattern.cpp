@@ -1,3 +1,4 @@
+// UML diagram: Factory_Design_Pattern.svg
 // #include <iostream>
 // #include <memory>
 // #include <string>

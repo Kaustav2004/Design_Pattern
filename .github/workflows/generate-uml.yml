@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - '**.cpp'
+      - '**/*.cpp'
       - '.clang-uml'
       - 'CMakeLists.txt'
       - '.github/workflows/generate-uml.yml'
@@ -34,14 +34,23 @@ jobs:
           cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           cmake --build build
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Generate diagrams
         run: |
-          clang-uml --progress --query-driver /usr/bin/c++
-          clang-uml -g mermaid --query-driver /usr/bin/c++
-          python3 scripts/embed_diagrams.py
+          clang-uml --progress -g mermaid --query-driver /usr/bin/c++
+          npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
+            -i build/uml/notification_factory.mmd \
+            -o Creational_pattern/Factory_Pattern/Factory_Design_Pattern.svg
+          npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
+            -i build/uml/payment_factory.mmd \
+            -o Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.svg
 
       - name: Commit generated diagrams
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update generated UML diagrams"
-          file_pattern: README.md docs/diagrams/*.puml docs/diagrams/*.mmd
+          file_pattern: Creational_pattern/Factory_Pattern/*.svg
