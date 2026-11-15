@@ -80,13 +80,8 @@ def format_diagram(path):
         visibility, name, arguments, return_type = method.groups()
         if name.startswith("~") or name == classes[current_class]:
             continue
-        return_type = simplify_type(return_type.rstrip("*"))
         parameters = simplify_arguments(arguments)
         signature = f"{visibility}{name}({parameters})"
-        if return_type:
-            signature += f" {return_type}"
-        if method.group(4).endswith("*"):
-            signature += "*"
         operations[current_class]["methods"].append(signature)
 
     if not classes:
