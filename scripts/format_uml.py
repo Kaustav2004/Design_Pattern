@@ -107,9 +107,10 @@ def format_diagram(path):
     for factory in project_names:
         if not factory.endswith("Factory"):
             continue
-        product = factory[: -len("Factory")]
-        if product in project_names:
-            relations.add((factory, "..>", product, "creates"))
+        product_prefix = factory[: -len("Factory")]
+        for product in project_names:
+            if product != factory and not product.endswith("Factory") and product.startswith(product_prefix):
+                relations.add((factory, "..>", product, "creates"))
 
     for source, kind, target, label in sorted(relations):
         rendered.append(f"    {source} {kind} {target} : {label}")

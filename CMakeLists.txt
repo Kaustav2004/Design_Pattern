@@ -13,3 +13,7 @@ add_executable(
   payment_factory_design_pattern
   Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.cpp
 )
+add_executable(
+  database_management_abstract_factory
+  Creational_pattern/Abstract_Factory_Pattern/Database_Management_Abstract_Factory_Design.cpp
+)

@@ -12,6 +12,7 @@ on:
       - 'scripts/add_uml_legend.py'
       - '.github/workflows/generate-uml.yml'
       - '.github/puppeteer-config.json'
+      - 'Creational_pattern/Abstract_Factory_Pattern/**'
   workflow_dispatch:
 
 permissions:
@@ -47,6 +48,7 @@ jobs:
           clang-uml --progress -g mermaid --query-driver /usr/bin/c++
           python3 scripts/format_uml.py build/uml/notification_factory.mmd
           python3 scripts/format_uml.py build/uml/payment_factory.mmd
+          python3 scripts/format_uml.py build/uml/database_management_abstract_factory.mmd
           npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
             -p .github/puppeteer-config.json \
             -i build/uml/notification_factory.mmd \
@@ -55,12 +57,17 @@ jobs:
             -p .github/puppeteer-config.json \
             -i build/uml/payment_factory.mmd \
             -o Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.svg
+          npx --yes --package @mermaid-js/mermaid-cli@11.4.2 mmdc \
+            -p .github/puppeteer-config.json \
+            -i build/uml/database_management_abstract_factory.mmd \
+            -o Creational_pattern/Abstract_Factory_Pattern/Database_Management_Abstract_Factory_Design.svg
           python3 scripts/add_uml_legend.py \
             Creational_pattern/Factory_Pattern/Factory_Design_Pattern.svg \
-            Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.svg
+            Creational_pattern/Factory_Pattern/Payment_Factory_Design_Pattern.svg \
+            Creational_pattern/Abstract_Factory_Pattern/Database_Management_Abstract_Factory_Design.svg
 
       - name: Commit generated diagrams
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: update generated UML diagrams"
-          file_pattern: Creational_pattern/Factory_Pattern/*.svg
+          file_pattern: Creational_pattern/**/*.svg

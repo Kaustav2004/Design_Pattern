@@ -33,3 +33,19 @@ diagrams:
     mermaid:
       after:
         - direction LR
+  database_management_abstract_factory:
+    type: class
+    glob:
+      - Creational_pattern/Abstract_Factory_Pattern/Database_Management_Abstract_Factory_Design.cpp
+    generate_method_arguments: full
+    include_relations_also_as_members: false
+    include:
+      relationships:
+        - inheritance
+        - dependency
+    exclude:
+      namespaces:
+        - std
+    mermaid:
+      after:
+        - direction LR
